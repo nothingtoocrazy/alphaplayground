@@ -2,10 +2,11 @@
 
 ## Stack
 ### Back-end
+- PHP 7.0
 - Laravel 5.5.43
 - MySQL
 ### Front-end
-- Angular 6
+- Angular 6 - [integration guide](https://github.com/toni-rmc/laravel-angular-integration/blob/master/docs/angular/integration.md)
 - Some styled components library... [Ant Design](https://ng.ant.design/docs/introduce/en) **OR** [PrimeNG](https://www.primefaces.org/primeng/#/)
 
 ## Action plan
