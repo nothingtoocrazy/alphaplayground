@@ -1,26 +1,38 @@
-#chatbot
-Sprint 1:
-Soccer Game Time site
-1. Find apis to get game times
-2. Figure out what format we get data in and create database tables
-3. Start Creating UI to display game times
+# Soccer game time chatbot app (IN DEVELOPMENT)
 
-Sprint 2:
-1. Populate database with dummy data
-2. Display dummy data from front end
-3. Start caching game time data in database
-4. Serve game data to front end
+## Stack
+### Back-end
+- Laravel 5.5.43
+- MySQL
+### Front-end
+- Angular 6
+- Some styled components library... [Ant Design](https://ng.ant.design/docs/introduce/en) **OR** [PrimeNG](https://www.primefaces.org/primeng/#/)
 
-Sprint 3:
-1. Build out specific game time info, links, etc
-2. Add UI flexibility to restrict game info to specific teams/ regions/ leagues?
-3. Add cron job to collect game time info for database.
+## Action plan
+### Sprint 1:
+- [ ] Find APIs to get game times
+- [ ] Figure out what format we get data in and create database tables
+- [ ] Start Creating UI to display game times
 
-Sprint 4:
-1. Integrate basic chat bot functionality for specific game time questions
-2. User specific data stored? So each user has certain league games that show.
-3. Chat bot extra features?
+### Sprint 2:
+- [ ] Populate database with dummy data
+- [ ] Display dummy data from front end
+- [ ] Start caching game time data in database
+- [ ] Serve game data to front end
 
-Ideas: for each game display which network is hosting the game. And possibly provide links to take you right to the game.
+### Sprint 3:
+- [ ] Build out specific game time info, links, etc
+- [ ] Add UI flexibility to restrict game info to specific teams/ regions/ leagues?
+- [ ] Add cron job to collect game time info for database.
 
-Long-term: We want to let the user enter a human-readable question. Interpret what they are asking, make collect the data and serve it back to them.
+### Sprint 4:
+- [ ] Integrate basic chat bot functionality for specific game time questions
+- [ ] User specific data stored? So each user has certain league games that show.
+- [ ] Chat bot extra features?
+
+
+## Ideas
+- For each game, display which network (fox/nbcsn/espn) is hosting the game and provide links to take you right to the game. Always have 'r/soccerstreams' as a fallback.
+
+## Long-term
+We want to let the user enter a human-readable question. Interpret what they are asking, and collect the data and serve it back to them.
