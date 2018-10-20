@@ -1,16 +1,14 @@
 # Soccer game time chatbot app (IN DEVELOPMENT)
 
 ## Stack
-### Back-end
 - Laravel 5.5.43 (PHP 7.0)
 - MySQL
-### Front-end
 - Angular 6 (Typescript) - [integration guide](https://github.com/toni-rmc/laravel-angular-integration/blob/master/docs/angular/integration.md)
-- Some styled components library... [Ant Design](https://ng.ant.design/docs/introduce/en) **OR** [PrimeNG](https://www.primefaces.org/primeng/#/)
+- A styled components library... [Ant Design](https://ng.ant.design/docs/introduce/en) **OR** [PrimeNG](https://www.primefaces.org/primeng/#/)
 
 ## Action plan
 ### Sprint 1:
-- [ ] Find APIs to get game times
+- [X] Find APIs to get game times --> https://jsbin.com/teloyiw/edit?html,js,output
 - [ ] Figure out what format we get data in and create database tables
 - [ ] Start Creating UI to display game times
 
@@ -22,7 +20,7 @@
 
 ### Sprint 3:
 - [ ] Build out specific game time info, links, etc
-- [ ] Add UI flexibility to restrict game info to specific teams/ regions/ leagues?
+- [ ] Add UI flexibility to restrict game info to specific teams/regions/leagues?
 - [ ] Add cron job to collect game time info for database.
 
 ### Sprint 4:
