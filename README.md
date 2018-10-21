@@ -8,7 +8,7 @@
 
 ## Action plan
 ### Sprint 1:
-- [X] Find APIs to get game times --> https://jsbin.com/teloyiw/edit?html,js,output
+- [X] Find APIs to get game times
 - [ ] Figure out what format we get data in and create database tables
 - [ ] Start Creating UI to display game times
 
