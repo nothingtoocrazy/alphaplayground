@@ -15,7 +15,9 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('/v1/api/games/upcoming', 'GamesController@upcomingGames');
-Route::get('/v1/api/games/fetch', 'GamesController@leagues');
+Route::get('/league', 'LeagueController@league');
 
-Route::get('/userModel', 'GamesController@getUserModel');
+
+Route::get('/users', 'UserController@users');
+
+Route::get('/v1/api/games/sync', 'SyncController@syncLeaguesToDatabase');
