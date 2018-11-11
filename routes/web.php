@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('/v1/api/games/upcoming', 'GamesController@upcomingGames');
 Route::get('/v1/api/games/fetch', 'GamesController@leagues');
+
+Route::get('/userModel', 'GamesController@getUserModel');
