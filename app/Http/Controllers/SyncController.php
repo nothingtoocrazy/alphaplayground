@@ -8,15 +8,9 @@ use App\Models\User;
 use App\Models\Leagues;
 // use GuzzleHttp\Client;
 
-class GamesController extends Controller
+class SyncController extends Controller
 {
-    public function upcomingGames() {
-      $results = DB::select('SELECT * FROM Users ORDER BY username');
-      // $resultsJSON = Response::json($results);
-      // return view('welcome')->with('results', $results);
-      return response()->json($results);
-    }
-    public function leagues(){
+    public function syncLeaguesToDatabase(){
 
         //THIS WORKS
     $client = new \GuzzleHttp\Client();
@@ -42,14 +36,5 @@ class GamesController extends Controller
       $strMessage =  "successfully inserted " . count($json->competitions) ." records into database";
 
       return $strMessage;
-      }
-
-      public function getUserModel(){
-        $userModel = Leagues::all();
-        print_r($userModel);
-        foreach($userModel as $user){
-          echo $user->competition_name;
-        }
-
       }
 }
