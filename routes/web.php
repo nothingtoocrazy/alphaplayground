@@ -21,4 +21,5 @@ Route::get('/teams', 'TeamController@team');
 
 Route::get('/users', 'UserController@users');
 
-Route::get('/v1/api/games/sync', 'SyncController@syncLeaguesToDatabase');
+Route::get('/v1/api/games/syncLeagues', 'SyncController@syncLeaguesToDatabase');
+Route::get('/v1/api/games/syncTeams', 'SyncController@syncTeamsToDatabase');
