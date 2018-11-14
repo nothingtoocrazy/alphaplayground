@@ -14,7 +14,7 @@ class SyncController extends Controller
 
         //THIS WORKS
     $client = new \GuzzleHttp\Client();
-    $headers = ['headers' => ['X-Auth-Token' => '643ecaa8ac1e48eea0a07dd29ad2a910']];
+    $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
     $res = $client->get('https://api.football-data.org/v2/competitions?plan=TIER_ONE', $headers);
     $json = json_decode($res->getBody());
     
