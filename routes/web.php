@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/league', 'LeagueController@league');
+Route::get('/teams', 'TeamController@team');
 
 
 Route::get('/users', 'UserController@users');

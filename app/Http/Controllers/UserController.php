@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Users;
 
 class UserController extends Controller
 {
     /**
-     * 
+     * z
      */
-    public function Users(){
-    $userModel = Leagues::all();
+    public function users(){
+    $userModel = Users::all();
     print_r($userModel);
     foreach($userModel as $user){
-        echo $user->competition_name;
+        echo $user;
     }
 
     }
