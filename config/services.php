@@ -34,5 +34,9 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    
+    'football_data' =>[
+        'base_url' =>'https://api.football-data.org/v2/',
+        'api_key' => env('FOOTBALL_DATA_API_KEY'),
+    ],
 ];
