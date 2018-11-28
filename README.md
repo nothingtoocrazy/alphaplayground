@@ -1,10 +1,10 @@
 # Soccer game time chatbot app (IN DEVELOPMENT)
-
+Laravel 5.5.43 (PHP 7.0) / MySQL
 Front-end Angular 6 repo: https://github.com/nothingtoocrazy/chatbot-frontend
 
-## Back-end stack
-- Laravel 5.5.43 (PHP 7.0)
-- MySQL
+## Ideas
+- For each game, display which network (fox/nbcsn/espn) is hosting the game and provide links to take you right to the game. Always have 'r/soccerstreams' as a fallback.
+- This site does some similar things. For content inspiration (not design - the design is bad): https://www.livesoccertv.com/
 
 ## Action plan
 ### Sprint 1:
@@ -27,10 +27,6 @@ Front-end Angular 6 repo: https://github.com/nothingtoocrazy/chatbot-frontend
 - [ ] Integrate basic chat bot functionality for specific game time questions
 - [ ] User specific data stored? So each user has certain league games that show.
 - [ ] Chat bot extra features?
-
-
-## Ideas
-- For each game, display which network (fox/nbcsn/espn) is hosting the game and provide links to take you right to the game. Always have 'r/soccerstreams' as a fallback.
 
 ## Long-term
 We want to let the user enter a human-readable question. Interpret what they are asking, and collect the data and serve it back to them.
