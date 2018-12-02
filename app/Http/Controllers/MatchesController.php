@@ -14,16 +14,17 @@ class MatchesController extends Controller
     // }
     
     public function matches() {
-        $dummyMatches = new \stdClass();
-        $dummyMatches->matches = [];
+        // $dummyMatches = new \stdClass();
+        // $dummyMatches->matches = [];
+        $dummyMatches = [];
         $match = new \stdClass();
         $match->title = "Tottenham vs. Arsenal";
         $match->score = "1-0";
-        $dummyMatches->matches[] = $match;
+        $dummyMatches[] = $match;
         $match = new \stdClass();
         $match->title = "Liverpool vs. Everton";
         $match->score = "1-4";
-        $dummyMatches->matches[] = $match;
+        $dummyMatches[] = $match;
        
         
         
