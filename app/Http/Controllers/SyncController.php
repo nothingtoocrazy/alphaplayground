@@ -37,4 +37,34 @@ class SyncController extends Controller
 
       return $strMessage;
       }
+
+    public function syncTeamsToDatabase(){
+
+      $client = new \GuzzleHttp\Client();
+      $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
+
+      $leagues = Leagues::all();
+      foreach ($leagues as $league) {
+        $res = $client->get('https://api.football-data.org/v2/competitions/'.$league->competition_id.'/teams', $headers);
+        $json = json_decode($res->getBody());
+        foreach ($json->teams as $key => $value) {
+          $team = new Teams;
+          // $team->competition_id = $value->id;
+          // $team->area_id = $value->area->id;
+          // $team->area_name = $value->area->name;
+          // $team->competition_name = $value->name;
+          // $team->competition_code = $value->code;
+          // TODO: LEFT OFF HERE
+          $league->save();
+        }
+        // echo "<pre>";
+        // print_r($json);
+        // echo "</pre>";
+      }
+
+
+      // $strMessage =  "successfully inserted " . count($json->competitions) ." records into database";
+
+      // return $strMessage;
+    }
 }
