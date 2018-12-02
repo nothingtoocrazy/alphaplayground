@@ -12,8 +12,23 @@ class MatchesController extends Controller
     // foreach($userModel as $user){
     //     echo $user;
     // }
+    
     public function matches() {
-        return "it worked";
+        $dummyMatches = new \stdClass();
+        $dummyMatches->matches = [];
+        $match = new \stdClass();
+        $match->title = "Tottenham vs. Arsenal";
+        $match->score = "1-0";
+        $dummyMatches->matches[] = $match;
+        $match = new \stdClass();
+        $match->title = "Liverpool vs. Everton";
+        $match->score = "1-4";
+        $dummyMatches->matches[] = $match;
+       
+        
+        
+        return json_encode($dummyMatches);
+        //"it worked";
     }
     
 }
