@@ -26,3 +26,4 @@ Route::get('/matches', 'MatchesController@matches');
 Route::get('/v1/api/games/sync', 'SyncController@syncLeaguesToDatabase');
 Route::get('/v1/api/games/syncLeagues', 'SyncController@syncLeaguesToDatabase');
 Route::get('/v1/api/games/syncTeams', 'SyncController@syncTeamsToDatabase');
+Route::get('/v1/api/games/syncMatches', 'SyncController@syncMatchesToDatabase');

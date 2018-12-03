@@ -28,6 +28,7 @@ class MatchesController extends Controller
        
         
         
+        
         return json_encode($dummyMatches);
         //"it worked";
     }
