@@ -20,7 +20,7 @@ class CreateTeamTable extends Migration
           $table->integer('team_id');
           $table->string('name');
           $table->string('tla');
-          $table->string('crestUrl');
+          $table->string('crestUrl')->nullable();
           $table->string('stadium');
           $table->timestamps();
       });

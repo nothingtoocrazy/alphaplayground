@@ -18,6 +18,7 @@ class Team extends Model
     'crestUrl' => 'team.crestUrl',
     'stadium' => 'team.stadium',
   ];
+
   protected $fillable = [
     'competition_id',
     'season_id',
@@ -25,7 +26,7 @@ class Team extends Model
     'name',
     'tla',
     'crestUrl',
-    'stadium'
+    'stadium',
   ];
 
   public function league() {
