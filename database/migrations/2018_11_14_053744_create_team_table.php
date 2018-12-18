@@ -13,11 +13,17 @@ class CreateTeamTable extends Migration
      */
     public function up()
     {
-        //todo: create the migration for the teams model
-        Schema::create('team', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('team', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('competition_id');
+          $table->integer('season_id');
+          $table->integer('team_id');
+          $table->string('name');
+          $table->string('tla');
+          $table->string('crestUrl');
+          $table->string('stadium');
+          $table->timestamps();
+      });
     }
 
     /**

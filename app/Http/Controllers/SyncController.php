@@ -7,19 +7,17 @@ use DB;
 use App\Models\User;
 use App\Models\Leagues;
 use App\Models\Matches;
+use App\Models\Team;
 // use GuzzleHttp\Client;
 
 class SyncController extends Controller
 {
     public function syncLeaguesToDatabase(){
 
-        //THIS WORKS
     $client = new \GuzzleHttp\Client();
     $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
     $res = $client->get('https://api.football-data.org/v2/competitions?plan=TIER_ONE', $headers);
     $json = json_decode($res->getBody());
-    
-
 
       foreach ($json->competitions as $key => $value) {
 
@@ -41,32 +39,33 @@ class SyncController extends Controller
 
     public function syncTeamsToDatabase(){
 
-      $client = new \GuzzleHttp\Client();
+      $client = new \GuzzleHttp\Client(['verify' => false]);
       $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
 
-      $leagues = Leagues::all();
-      foreach ($leagues as $league) {
-        $res = $client->get('https://api.football-data.org/v2/competitions/'.$league->competition_id.'/teams', $headers);
+      // $leagues = Leagues::all();
+      // foreach ($leagues as $league) {
+        // $res = $client->get('https://api.football-data.org/v2/competitions/'.$league->competition_id.'/teams', $headers);
+        $res = $client->get('https://api.football-data.org/v2/competitions/2021/teams', $headers);
         $json = json_decode($res->getBody());
         foreach ($json->teams as $key => $value) {
-          $team = new Teams;
-          // $team->competition_id = $value->id;
-          // $team->area_id = $value->area->id;
-          // $team->area_name = $value->area->name;
-          // $team->competition_name = $value->name;
-          // $team->competition_code = $value->code;
-          // TODO: LEFT OFF HERE
-          $league->save();
+          $team = new Team;
+
+          $team->competition_id = $json->competition->id;
+          $team->season_id = $json->season->id;
+
+          $team->team_id = $value->id;
+          $team->name = $value->name;
+          $team->tla = $value->tla;
+          $team->crestUrl = $value->crestUrl;
+          $team->stadium = $value->venue;
+
+          $team->save();
         }
-        // echo "<pre>";
-        // print_r($json);
-        // echo "</pre>";
-      }
+      // }
 
+      $strMessage =  "successfully inserted " . count($json->teams) ." records into database";
 
-      // $strMessage =  "successfully inserted " . count($json->competitions) ." records into database";
-
-      // return $strMessage;
+      return $strMessage;
     }
 
   public function syncMatchesToDatabase(){
@@ -80,39 +79,29 @@ class SyncController extends Controller
         $json = json_decode($res->getBody());
         // print_r($json);
         foreach ($json->matches as $key => $value) {
-        $match = new Matches;
-          // $team->competition_id = $value->id;
-          // $team->area_id = $value->area->id;
-          // $team->area_name = $value->area->name;
-          // $team->competition_name = $value->name;
-          // $team->competition_code = $value->code;
-          // TODO: LEFT OFF HERE $table->integer('match_id');
-        $match->match_id = $value->id;
-        
-        $match->competition_id = $value->competition->id;
-        $match->season_id = $value->season->id;
+          $match = new Matches;
 
-        $match->homeTeam = $value->homeTeam->name;
-        $match->awayTeam = $value->awayTeam->name;
+          $match->match_id = $value->id;
+          
+          $match->competition_id = $value->competition->id;
+          $match->season_id = $value->season->id;
 
-        $match->winner = $value->score->winner;
-        $match->status = $value->status;
+          $match->homeTeam = $value->homeTeam->name;
+          $match->awayTeam = $value->awayTeam->name;
 
-        $match->homeScore = $value->score->fullTime->homeTeam;
-        $match->awayScore = $value->score->fullTime->awayTeam;
-        
-        $match->homePenalties = $value->score->penalties->homeTeam;
-        $match->awayPenalties = $value->score->penalties->awayTeam;
+          $match->winner = $value->score->winner;
+          $match->status = $value->status;
 
-        // $match->utcDate = $value->utcDate;
-        // TODO: help  
-        $match->save(); 
+          $match->homeScore = $value->score->fullTime->homeTeam;
+          $match->awayScore = $value->score->fullTime->awayTeam;
+          
+          $match->homePenalties = $value->score->penalties->homeTeam;
+          $match->awayPenalties = $value->score->penalties->awayTeam;
 
+          // TODO: help
+          // $match->utcDate = $value->utcDate;
+          $match->save();
         }
-        // echo "<pre>";
-        // print_r($json);
-        // echo "</pre>";
-
 
       $strMessage =  "successfully inserted " . count($json->matches) ." records into database";
 
