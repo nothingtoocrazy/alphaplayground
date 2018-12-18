@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
-use App\Models\Leagues;
-use App\Models\Matches;
+use App\Models\League;
+use App\Models\Match;
 use App\Models\Team;
 // use GuzzleHttp\Client;
 
@@ -21,7 +21,7 @@ class SyncController extends Controller
 
       foreach ($json->competitions as $key => $value) {
 
-        $league = new Leagues;
+        $league = new League;
         $league->competition_id = $value->id;
         $league->area_id = $value->area->id;
         $league->area_name = $value->area->name;
@@ -79,7 +79,7 @@ class SyncController extends Controller
         $json = json_decode($res->getBody());
         // print_r($json);
         foreach ($json->matches as $key => $value) {
-          $match = new Matches;
+          $match = new Match;
 
           $match->match_id = $value->id;
           

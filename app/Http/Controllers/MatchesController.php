@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Matches;
+use App\Models\Match;
 
-class MatchesController extends Controller {
+class MatchController extends Controller {
   public function matches() {
-    $results = Matches::all();
+    $results = Match::all();
     $payload = array(
       'count' => count($results),
       'matches' => $results

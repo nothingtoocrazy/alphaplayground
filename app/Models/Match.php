@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Leagues extends Model
+class Match extends Model
 {
-    //
+    protected $table = "match";
+
 }

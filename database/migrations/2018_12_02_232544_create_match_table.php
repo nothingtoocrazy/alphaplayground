@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMatchesTable extends Migration
+class CreateMatchTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateMatchesTable extends Migration
     public function up()
     {
         //todo: create the migration for the teams model
-        Schema::create('matches', function (Blueprint $table) {
+        Schema::create('match', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('match_id');
             $table->integer('competition_id');
@@ -40,6 +40,6 @@ class CreateMatchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matches');
+        Schema::dropIfExists('match');
     }
 }
