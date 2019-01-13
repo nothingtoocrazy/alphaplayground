@@ -42,26 +42,30 @@ class SyncController extends Controller
       $client = new \GuzzleHttp\Client(['verify' => false]);
       $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
 
-      // $leagues = Leagues::all();
-      // foreach ($leagues as $league) {
-        // $res = $client->get('https://api.football-data.org/v2/competitions/'.$league->competition_id.'/teams', $headers);
-        $res = $client->get('https://api.football-data.org/v2/competitions/2021/teams', $headers);
+      $leagues = League::all();
+      foreach ($leagues as $league) {
+        $res = $client->get('https://api.football-data.org/v2/competitions/'.$league->competition_id.'/teams', $headers);
+        // $res = $client->get('https://api.football-data.org/v2/competitions/2021/teams', $headers);
         $json = json_decode($res->getBody());
         foreach ($json->teams as $key => $value) {
-          $team = new Team;
 
-          $team->competition_id = $json->competition->id;
-          $team->season_id = $json->season->id;
+          Team::updateOrCreate(
+            [
+              'team_id' => $value->id,
+            ],
+            [
+              'competition_id' => $json->competition->id,
+              'season_id' => $json->season->id,
+              'team_id' => $value->id,
+              'name' => $value->name,
+              'tla' => $value->tla,
+              'crestUrl' => $value->crestUrl,
+              'stadium' => $value->venue,
+            ]
+          );
 
-          $team->team_id = $value->id;
-          $team->name = $value->name;
-          $team->tla = $value->tla;
-          $team->crestUrl = $value->crestUrl;
-          $team->stadium = $value->venue;
-
-          $team->save();
         }
-      // }
+      }
 
       $strMessage =  "successfully inserted " . count($json->teams) ." records into database";
 
