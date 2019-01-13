@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Match;
 
 class MatchController extends Controller {
-  public function matches() {
+  public function match() {
     $results = Match::all();
     $payload = array(
       'count' => count($results),

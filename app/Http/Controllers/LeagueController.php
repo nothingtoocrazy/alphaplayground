@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Leagues;
+use App\Models\League;
 
 class LeagueController extends Controller
 {
@@ -14,7 +14,7 @@ class LeagueController extends Controller
      * */
        
     public function league($league = null) {
-      $results = Leagues::all();
+      $results = League::all();
       return $results;
     }
 }
