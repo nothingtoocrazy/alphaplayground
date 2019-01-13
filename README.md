@@ -10,7 +10,7 @@ Front-end Angular 6 repo: https://github.com/nothingtoocrazy/chatbot-frontend
 ## Schedule to sync data from football-data API to DB
 - Leagues: once a year
 - Teams: once a year
-- Matches: twice a month
+- Matches: daily at midnight
 - Day-of matches: direct API call
 
 ## Action plan
