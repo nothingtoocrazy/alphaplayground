@@ -19,7 +19,9 @@ class CreateMatchTable extends Migration
             $table->integer('match_id');
             $table->integer('competition_id');
             $table->integer('season_id');
+            $table->integer('homeTeamId');
             $table->string('homeTeam');
+            $table->integer('awayTeamId');
             $table->string('awayTeam');
             $table->string('winner')->nullable();
             $table->string('status');

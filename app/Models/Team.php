@@ -30,6 +30,6 @@ class Team extends Model
   ];
 
   public function league() {
-    return $this->hasOne('App\League');
+    return $this->hasOne('App\Models\League', 'competition_id', 'competition_id');
   }
 }

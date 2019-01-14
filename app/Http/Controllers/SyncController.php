@@ -51,6 +51,7 @@ class SyncController extends Controller
 
           Team::updateOrCreate(
             [
+              'competition_id' => $json->competition->id,
               'team_id' => $value->id,
             ],
             [
@@ -91,7 +92,9 @@ class SyncController extends Controller
           $match->season_id = $value->season->id;
 
           $match->homeTeam = $value->homeTeam->name;
+          $match->homeTeamId = $value->homeTeam->id;
           $match->awayTeam = $value->awayTeam->name;
+          $match->awayTeamId = $value->awayTeam->id;
 
           $match->winner = $value->score->winner;
           $match->status = $value->status;
