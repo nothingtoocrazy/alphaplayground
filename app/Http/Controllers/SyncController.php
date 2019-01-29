@@ -80,7 +80,6 @@ class SyncController extends Controller
 
         $res = $client->get('https://api.football-data.org/v2/matches/?dateFrom=2019-01-18&dateTo=2019-01-28', $headers);
         $json = json_decode($res->getBody());
-        print_r($json);
         foreach ($json->matches as $key => $value) {
           $match = new Match;
           Match::updateOrCreate(
@@ -90,6 +89,7 @@ class SyncController extends Controller
             ],
             [
               'season_id' => $value->season->id,
+              'utcDate' => $value->utcDate,
               'homeTeam' => $value->homeTeam->name,
               'homeTeamId' => $value->homeTeam->id,
               'awayTeam' => $value->awayTeam->name,
@@ -100,7 +100,6 @@ class SyncController extends Controller
               'awayScore' => $value->score->fullTime->awayTeam,
               'homePenalties' => $value->score->penalties->homeTeam,
               'awayPenalties' => $value->score->penalties->awayTeam,
-              // 'utcDate' => $value->utcDate,
             ]
           );
 
