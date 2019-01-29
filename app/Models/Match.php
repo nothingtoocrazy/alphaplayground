@@ -10,9 +10,10 @@ class Match extends Model
 
     public $fields = [
         'id' => 'match.id',
+        'match_id' => 'match.match_id',
         'competition_id' => 'match.competition.id',
         'season_id' => 'match.season_id',
-        'match_id' => 'match.match_id',
+        'utcDate' => 'match.utcDate',
         'homeTeam' => 'match.homeTeam',
         'homeTeamId' => 'match.homeTeamId',
         'awayTeam' => 'match.awayTeam',
@@ -26,9 +27,10 @@ class Match extends Model
     ];
 
     protected $fillable = [
-        'competition_id',
         'match_id',
+        'competition_id',
         'season_id',
+        'utcDate',
         'homeTeam',
         'homeTeamId',
         'awayTeam',
