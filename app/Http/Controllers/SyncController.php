@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\League;
 use App\Models\Match;
 use App\Models\Team;
+use Carbon;
 // use GuzzleHttp\Client;
 
 class SyncController extends Controller
@@ -89,7 +90,7 @@ class SyncController extends Controller
             ],
             [
               'season_id' => $value->season->id,
-              'utcDate' => $value->utcDate,
+              'utcDate' => Carbon::parse($value->utcDate),
               'homeTeam' => $value->homeTeam->name,
               'homeTeamId' => $value->homeTeam->id,
               'awayTeam' => $value->awayTeam->name,

@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('/league', 'LeagueController@league');
 Route::get('/team', 'TeamController@team');
 Route::get('/user', 'UserController@user');
-Route::get('/match', 'MatchController@match');
+Route::post('/match', 'MatchController@match');
 
 Route::get('/v1/api/games/sync', 'SyncController@syncLeaguesToDatabase');
 Route::get('/v1/api/games/syncLeague', 'SyncController@syncLeaguesToDatabase');
