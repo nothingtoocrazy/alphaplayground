@@ -13,17 +13,11 @@ class MatchController extends Controller {
   }
 
   public function match(Request $request) {
-    $payload = array(
-      'count' => 2,
-      'teams' => 'hihi'
-    );
-    
-    return $payload;
     $start_date = $request->input('start_date');
     $end_date = $request->input('end_date');
     $team = $request->input('team');
     $league = $request->input('league');
-    dd($league);
+   
     $result = $this->MatchRepository->filterMatches($start_date, $end_date, $team, $league);
 
     return $result;
