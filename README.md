@@ -1,7 +1,14 @@
-# Soccer game time chatbot app (IN DEVELOPMENT)
+# Soccer game time chatbot app
 Laravel 5.5.43 (PHP 7.0) / MySQL
 
 Front-end Angular 6 repo: https://github.com/nothingtoocrazy/chatbot-frontend
+
+---
+
+### TODO:
+- configure CORS
+
+---
 
 ## Ideas
 - For each game, display which network (fox/nbcsn/espn) is hosting the game and provide links to take you right to the game. Always have 'r/soccerstreams' as a fallback.
