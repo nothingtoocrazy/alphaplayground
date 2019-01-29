@@ -31,3 +31,7 @@ Front-end Angular 6 repo: https://github.com/nothingtoocrazy/chatbot-frontend
 
 ## Long-term
 We want to let the user enter a human-readable question. Interpret what they are asking, and collect the data and serve it back to them.
+
+for Day of games:
+Consider webhooks to update data when important events happen ( like game finished or Goals scored);
+

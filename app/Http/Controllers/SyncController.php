@@ -78,36 +78,35 @@ class SyncController extends Controller
       $client = new \GuzzleHttp\Client();
       $headers = ['headers' => ['X-Auth-Token' => env('FOOTBALL_DATA_API_KEY')]];
 
-      // $matches = Matches::all();
-        $res = $client->get('https://api.football-data.org/v2/matches', $headers);
-        
+        $res = $client->get('https://api.football-data.org/v2/matches/?dateFrom=2019-01-18&dateTo=2019-01-28', $headers);
         $json = json_decode($res->getBody());
-        // print_r($json);
+        print_r($json);
         foreach ($json->matches as $key => $value) {
           $match = new Match;
-
-          $match->match_id = $value->id;
-          
-          $match->competition_id = $value->competition->id;
-          $match->season_id = $value->season->id;
-
-          $match->homeTeam = $value->homeTeam->name;
-          $match->homeTeamId = $value->homeTeam->id;
-          $match->awayTeam = $value->awayTeam->name;
-          $match->awayTeamId = $value->awayTeam->id;
-
-          $match->winner = $value->score->winner;
-          $match->status = $value->status;
-
-          $match->homeScore = $value->score->fullTime->homeTeam;
-          $match->awayScore = $value->score->fullTime->awayTeam;
-          
-          $match->homePenalties = $value->score->penalties->homeTeam;
-          $match->awayPenalties = $value->score->penalties->awayTeam;
+          Match::updateOrCreate(
+            [
+              'match_id' => $value->id,
+              'competition_id' => $value->competition->id
+            ],
+            [
+              'season_id' => $value->season->id,
+              'homeTeam' => $value->homeTeam->name,
+              'homeTeamId' => $value->homeTeam->id,
+              'awayTeam' => $value->awayTeam->name,
+              'awayTeamId' => $value->awayTeam->id,
+              'winner' => $value->score->winner,
+              'status' => $value->status,
+              'homeScore' => $value->score->fullTime->homeTeam,
+              'awayScore' => $value->score->fullTime->awayTeam,
+              'homePenalties' => $value->score->penalties->homeTeam,
+              'awayPenalties' => $value->score->penalties->awayTeam,
+              // 'utcDate' => $value->utcDate,
+            ]
+          );
 
           // TODO: help
           // $match->utcDate = $value->utcDate;
-          $match->save();
+          // $match->save();
         }
 
       $strMessage =  "successfully inserted " . count($json->matches) ." records into database";
