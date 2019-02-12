@@ -14,7 +14,7 @@
 Route::get('/', function () {
   return view('welcome');
 });
-
+Route::group(['middleware' => 'cors'], function () {
 Route::get('/league', 'LeagueController@league');
 Route::get('/team', 'TeamController@team');
 Route::get('/user', 'UserController@user');
@@ -24,3 +24,5 @@ Route::get('/v1/api/games/sync', 'SyncController@syncLeaguesToDatabase');
 Route::get('/v1/api/games/syncLeague', 'SyncController@syncLeaguesToDatabase');
 Route::get('/v1/api/games/syncTeam', 'SyncController@syncTeamsToDatabase');
 Route::get('/v1/api/games/syncMatch', 'SyncController@syncMatchesToDatabase');
+
+});
